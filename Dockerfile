@@ -22,5 +22,5 @@ COPY assets ./assets
 # Expose port
 EXPOSE 4001
 
-# Start application
-CMD ["mix", "phx.server"]
+# Start application with migrations
+CMD ["sh", "-c", "mix ecto.create --quiet || true && mix ecto.migrate && mix phx.server"]
