@@ -2,10 +2,14 @@ import Config
 
 # Configure your database
 config :investor_app, InvestorApp.Repo,
-  username: "postgres", # for docker if you run locally use the username for your local postgres
-  password: "postgres", # for docker if you run locally use the password for your local postgres
-  hostname: "db", # for docker if you run locally use localhost/or youy local host name
-  database: "investor_app_dev", # for docker if you run locally use the database name for your local postgres
+  # for docker if you run locally use the username for your local postgres
+  username: "postgres",
+  # for docker if you run locally use the password for your local postgres
+  password: "postgres",
+  # for docker if you run locally use localhost/or youy local host name
+  hostname: "db",
+  # for docker if you run locally use the database name for your local postgres
+  database: "investor_app_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
