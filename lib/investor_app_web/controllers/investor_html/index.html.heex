@@ -1,0 +1,66 @@
+<Layouts.app flash={@flash}>
+  <div class="container">
+    <h1>Investor Data Management</h1>
+    <p class="subtitle">Enter investor information and upload required documents</p>
+
+    <form action={~p"/investors"} method="post" enctype="multipart/form-data">
+      <input type="hidden" name="_csrf_token" value={Phoenix.Controller.get_csrf_token()} />
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="investor_first_name">First Name *</label>
+          <input type="text" id="investor_first_name" name="investor[first_name]" required />
+        </div>
+
+        <div class="form-group">
+          <label for="investor_last_name">Last Name *</label>
+          <input type="text" id="investor_last_name" name="investor[last_name]" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="investor_date_of_birth">Date of Birth *</label>
+          <input type="date" id="investor_date_of_birth" name="investor[date_of_birth]" required />
+        </div>
+
+        <div class="form-group">
+          <label for="investor_phone_number">Phone Number *</label>
+          <input type="tel" id="investor_phone_number" name="investor[phone_number]" placeholder="(555) 123-4567" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="investor_street_address">Street Address *</label>
+        <input type="text" id="investor_street_address" name="investor[street_address]" placeholder="123 Main Street" required />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="investor_state">State *</label>
+          <select id="investor_state" name="investor[state]" required>
+            <option value="">Select State</option>
+            <%= for state <- @states do %>
+              <option value={elem(state, 0)}><%= elem(state, 1) %></option>
+            <% end %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="investor_zip_code">ZIP Code *</label>
+          <input type="text" id="investor_zip_code" name="investor[zip_code]" placeholder="12345" pattern="[0-9]{5}" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="file">Upload Document *</label>
+        <input type="file" id="file" name="file" required />
+        <p class="file-info">Maximum file size: 3 MB</p>
+      </div>
+
+      <button type="submit">Submit Investor Data</button>
+    </form>
+
+    <a href={~p"/investors/list"} class="view-link">View All Investors</a>
+  </div>
+</Layouts.app>

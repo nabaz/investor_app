@@ -49,44 +49,10 @@ defmodule InvestorApp.Investors do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_investor(attrs) do
+  def create_investor(attrs \\ %{}) do
     %Investor{}
     |> Investor.changeset(attrs)
     |> Repo.insert()
-  end
-
-  @doc """
-  Updates a investor.
-
-  ## Examples
-
-      iex> update_investor(investor, %{field: new_value})
-      {:ok, %Investor{}}
-
-      iex> update_investor(investor, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_investor(%Investor{} = investor, attrs) do
-    investor
-    |> Investor.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a investor.
-
-  ## Examples
-
-      iex> delete_investor(investor)
-      {:ok, %Investor{}}
-
-      iex> delete_investor(investor)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_investor(%Investor{} = investor) do
-    Repo.delete(investor)
   end
 
   @doc """
