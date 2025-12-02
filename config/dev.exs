@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :investor_app, InvestorApp.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "investor_app_dev",
+  username: "postgres", # for docker if you run locally use the username for your local postgres
+  password: "postgres", # for docker if you run locally use the password for your local postgres
+  hostname: "db", # for docker if you run locally use localhost/or youy local host name
+  database: "investor_app_dev", # for docker if you run locally use the database name for your local postgres
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -17,9 +17,8 @@ config :investor_app, InvestorApp.Repo,
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
 config :investor_app, InvestorAppWeb.Endpoint,
-  # Binding to loopback ipv4 address prevents access from other machines.
-  # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}],
+  # Binding to 0.0.0.0 allows access from other machines and Docker containers
+  http: [ip: {0, 0, 0, 0}],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
