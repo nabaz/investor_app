@@ -16,7 +16,7 @@ defmodule InvestorAppWeb.InvestorController do
 
     # TODO: Implement different handling based on file size
     # Check file size limit (3 MB)
-    # here we can have case ..do for file sizes
+    # here we can have check for file sizes
     # if file_size > 3MB (3 * 1024 * 1024 bytes)
     # process allow Support for files larger than 3MB (upload progress indicator, etc)
     # else < 3mb do regular upload
