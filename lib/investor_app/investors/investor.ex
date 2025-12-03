@@ -42,6 +42,9 @@ defmodule InvestorApp.Investors.Investor do
       :zip_code,
       :file_path
     ])
+    |> validate_format(:zip_code, ~r/^\d{5}$/, message: "must be a 5-digit ZIP code")
     |> validate_inclusion(:state, @us_state, message: "must be a valid US state")
   end
+
+  def us_states, do: @us_state
 end

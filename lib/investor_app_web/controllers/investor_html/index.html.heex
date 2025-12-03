@@ -5,7 +5,7 @@
 
     <form action={~p"/investors"} method="post" enctype="multipart/form-data">
       <input type="hidden" name="_csrf_token" value={Phoenix.Controller.get_csrf_token()} />
-      
+
       <div class="form-row">
         <div class="form-group">
           <label for="investor_first_name">First Name *</label>
@@ -26,13 +26,25 @@
 
         <div class="form-group">
           <label for="investor_phone_number">Phone Number *</label>
-          <input type="tel" id="investor_phone_number" name="investor[phone_number]" placeholder="(555) 123-4567" required />
+          <input
+            type="tel"
+            id="investor_phone_number"
+            name="investor[phone_number]"
+            placeholder="(555) 123-4567"
+            required
+          />
         </div>
       </div>
 
       <div class="form-group">
         <label for="investor_street_address">Street Address *</label>
-        <input type="text" id="investor_street_address" name="investor[street_address]" placeholder="123 Main Street" required />
+        <input
+          type="text"
+          id="investor_street_address"
+          name="investor[street_address]"
+          placeholder="123 Main Street"
+          required
+        />
       </div>
 
       <div class="form-row">
@@ -41,14 +53,25 @@
           <select id="investor_state" name="investor[state]" required>
             <option value="">Select State</option>
             <%= for state <- @states do %>
-              <option value={elem(state, 0)}><%= elem(state, 1) %></option>
+              <option value={elem(state, 0)}>{elem(state, 1)}</option>
             <% end %>
           </select>
         </div>
 
         <div class="form-group">
           <label for="investor_zip_code">ZIP Code *</label>
-          <input type="text" id="investor_zip_code" name="investor[zip_code]" placeholder="12345" pattern="[0-9]{5}" required />
+          <input
+            type="text"
+            id="investor_zip_code"
+            name="investor[zip_code]"
+            placeholder="12345"
+            pattern="[0-9]{5}"
+            maxlength="5"
+            inputmode="numeric"
+            onkeypress="return /[0-9]/.test(event.key)"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            required
+          />
         </div>
       </div>
 
@@ -60,7 +83,5 @@
 
       <button type="submit">Submit Investor Data</button>
     </form>
-
-    <a href={~p"/investors/list"} class="view-link">View All Investors</a>
   </div>
 </Layouts.app>
