@@ -47,15 +47,11 @@ defmodule InvestorAppWeb.InvestorController do
 
       case Investors.create_investor(investor_params) do
         {:ok, _investor} ->
-          IO.inspect("Investor created successfully", label: "Success")
-
           conn
           |> put_flash(:info, "Investor created successfully")
           |> redirect(to: ~p"/")
 
         {:error, %Ecto.Changeset{} = changeset} ->
-          IO.inspect(changeset.errors, label: "Changeset errors")
-
           conn
           |> put_flash(:error, "Failed to create investor: #{inspect(changeset.errors)}")
           |> redirect(to: ~p"/")
