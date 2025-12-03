@@ -9,7 +9,6 @@ defmodule InvestorAppWeb.InvestorController do
     render(conn, :index, changeset: changeset, states: states)
   end
 
-  @spec create(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def create(conn, %{"investor" => investor_params, "file" => upload_file}) do
     # Get file size from the uploaded file
     %{size: file_size} = File.stat!(upload_file.path)
